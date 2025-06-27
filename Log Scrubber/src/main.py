@@ -1,10 +1,12 @@
 from pathlib import Path
+from file_manager import LogScrubber
 
-cwd = Path.cwd()
-target = Path(cwd / input("File you would like to scrub: "))
-if target.is_file():
-    # scrub
-    ...
-elif target.is_dir():
-    # walk file tree
-    ...
+def main():
+    cwd = Path.cwd()
+    target = Path(cwd / input("File/Dir you would like to scrub: ".strip()))
+    scrubber = LogScrubber(target)
+    scrubber.scrub_logs()
+
+
+if __name__ == '__main__':
+    main()
